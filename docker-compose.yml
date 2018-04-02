@@ -1,10 +1,7 @@
 ---
-# Define the version of the compose file we're using
 version: '0.1'
 
-# Define our services
 services:
-  # Jenkins configuration
   jenkins:
     image: jenkinsci/blueocean
     user: root
@@ -12,10 +9,10 @@ services:
       - "8080:8080"
       - "50000:50000"
     environment:
-      - JENKINS_USERNAME=admin
-      - JENKINS_PASSWORD=admin
+      - "JAVA_OPTS=-Djenkins.install.runSetupWizard=false"
+      - "JENKINS_OPTS=--argumentsRealm.passwd.admin=password --argumentsRealm.roles.user=admin --argumentsRealm.roles.admin=admin"
     volumes:
-      - "jenkins-data:/var/jenkins_home"
+      - "$HOME/jenkins_data:/var/jenkins_home"
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "$HOME:/home"
 
