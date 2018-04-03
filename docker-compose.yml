@@ -1,5 +1,5 @@
 ---
-version: '0.1'
+version: '3'
 
 services:
   jenkins:
@@ -8,8 +8,9 @@ services:
     ports:
       - "8080:8080"
       - "50000:50000"
+      - "8089:8089"
     environment:
-      - "JAVA_OPTS=-Djenkins.install.runSetupWizard=false"
+      - "JAVA_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,address=8089,server=y,suspend=n -Djenkins.install.runSetupWizard=false"
       - "JENKINS_OPTS=--argumentsRealm.passwd.admin=password --argumentsRealm.roles.user=admin --argumentsRealm.roles.admin=admin"
     volumes:
       - "$HOME/jenkins_data:/var/jenkins_home"
