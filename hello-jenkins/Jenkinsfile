@@ -16,11 +16,24 @@ pipeline {
                 sh 'echo "Test Step"'
             }
         }
+          stage ("Download Binaries") {
+    def server = Artifactory.server 'artifactory'
+    def file = [
+      'pattern': "media-local/windows/wmi_exporter/v0.2.7/wmi_exporter-amd64.zip",
+      'target': "wmi_exporter-amd64.zip",
+      'flat': true,
+    ]
+    server.download(
+      JsonOutput.toJson([
+        'files': [file]
+      ]))
+  }
         stage('Deploy') {
             steps {
                 sh 'echo "Deploy Step"'
             }
         }
+
     }
 }
 
