@@ -17,6 +17,7 @@ pipeline {
             }
         }
         stage ('Download Binaries') {
+            steps {
             def server = Artifactory.server 'artifactory'
             def file = [
                 'pattern': "media-local/windows/wmi_exporter/v0.2.7/wmi_exporter-amd64.zip",
@@ -27,6 +28,7 @@ pipeline {
             JsonOutput.toJson([
             'files': [file]
             ]))
+            }
         }
         stage('Deploy') {
             steps {
