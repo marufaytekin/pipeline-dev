@@ -1,3 +1,4 @@
+import groovy.json.JsonOutput
 
                     stage("Start") {
                         node("master") {
@@ -7,10 +8,20 @@
 
                     
                         stage('QA gatekeeper'){
-                            
-                            timeout(time: 10, unit: "SECONDS") {
-                                input 'Deploy to QA?'
-                            }
+
+
+  stage ("Download Binaries") {
+    def server = Artifactory.server 'artifactory'
+    def file = [
+      'pattern': "media-local/windows/wmi_exporter/v${buildVersion}/wmi_exporter-amd64.zip",
+      'target': "${workspace}/wmi_exporter-amd64.zip",
+      'flat': true,
+    ]
+    server.download(
+      JsonOutput.toJson([
+        'files': [file]
+      ]))
+  }
 
                         }
                         
@@ -18,7 +29,6 @@
                         stage('Deploy to QA southcentralus'){
                             
                             node("master") {
-                                unstash 'manifests'
                                 def v = env.version
 
                                 timeout(time: 20, unit: "SECONDS") {
