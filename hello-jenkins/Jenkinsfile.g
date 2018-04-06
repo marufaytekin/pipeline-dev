@@ -1,8 +1,6 @@
 node {
                     stage("Start") {
-                        node("master") {
                             sh """echo start"""
-                        }
                     }
 
 
@@ -17,21 +15,13 @@ node {
                                }
                             ]
                         }"""
-                     server.download(downloadSpec)   
+                        server.download(downloadSpec)   
                      }  
 
                         stage('Deploy to QA southcentralus'){
-                            
-                            node("master") {
                                 def v = env.version
-
                                 timeout(time: 20, unit: "SECONDS") {
-                                    
-                                    
                                 }
-
-                            }
-
                         }
                         
                     
