@@ -5,9 +5,6 @@ node {
                         }
                     }
 
-                    
-                        stage('QA gatekeeper'){
-
 
                     stage ("Download Binaries") {
                         def server = Artifactory.server 'artifactory'
@@ -23,9 +20,6 @@ node {
                      server.download(downloadSpec)   
                      }  
 
-                    }
-                        
-                    
                         stage('Deploy to QA southcentralus'){
                             
                             node("master") {
