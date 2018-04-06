@@ -17,7 +17,7 @@ pipeline {
                 sh 'echo "Test Step"'
             }
         }
-        stage ('Download Binaries') {
+        /*stage ('Download Binaries') {
             steps {
             def server = Artifactory.server 'artifactory'
             def file = [
@@ -31,6 +31,7 @@ pipeline {
             ]))
             }
         }
+        */
         stage('Deploy') {
             steps {
                 sh 'echo "Deploy Step"'
