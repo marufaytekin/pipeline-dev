@@ -2,7 +2,7 @@
 pipeline {
     agent {
         docker {
-            image 'node:custom-build-agent' 
+            image 'node:7-alpine' 
             args '-p 3000:3000' 
         }
     }
@@ -17,21 +17,6 @@ pipeline {
                 sh 'echo "Test Step"'
             }
         }
-        /*stage ('Download Binaries') {
-            steps {
-            def server = Artifactory.server 'artifactory'
-            def file = [
-                'pattern': "media-local/windows/wmi_exporter/v0.2.7/wmi_exporter-amd64.zip",
-                'target': "wmi_exporter-amd64.zip",
-                'flat': true,
-            ]
-            server.download(
-            JsonOutput.toJson([
-            'files': [file]
-            ]))
-            }
-        }
-        */
         stage('Deploy') {
             steps {
                 sh 'echo "Deploy Step"'
