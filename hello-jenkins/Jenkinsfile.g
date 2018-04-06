@@ -1,5 +1,5 @@
 import groovy.json.JsonOutput
-
+node {
                     stage("Start") {
                         node("master") {
                             sh """echo start"""
@@ -44,4 +44,4 @@ import groovy.json.JsonOutput
                     
 
                     stage("Done") {}
-
+}
