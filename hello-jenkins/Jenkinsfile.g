@@ -15,11 +15,9 @@ import groovy.json.JsonOutput
                         def downloadSpec = """ {
                             "files": [
                             {
-                                "pattern": 
 
                                 "pattern": "media-local/windows/wmi_exporter/v0.2.7/wmi_exporter-amd64.zip",
-                                "target": "wmi_exporter-amd64.zip",
-                                "flat": true,
+                                "target": "wmi_exporter-amd64.zip"
                                }
                             ]
                         }"""
