@@ -1,4 +1,3 @@
-import groovy.json.JsonOutput
 node {
                     stage("Start") {
                         node("master") {
