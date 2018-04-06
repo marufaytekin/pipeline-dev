@@ -10,20 +10,23 @@ import groovy.json.JsonOutput
                         stage('QA gatekeeper'){
 
 
-  stage ("Download Binaries") {
-    def server = Artifactory.server 'artifactory'
-    def file = [
-      'pattern': "media-local/windows/wmi_exporter/v${buildVersion}/wmi_exporter-amd64.zip",
-      'target': "${workspace}/wmi_exporter-amd64.zip",
-      'flat': true,
-    ]
-    server.download(
-      JsonOutput.toJson([
-        'files': [file]
-      ]))
-  }
+                    stage ("Download Binaries") {
+                        def server = Artifactory.server 'artifactory'
+                        def downloadSpec = """ {
+                            "files": [
+                            {
+                                "pattern": 
 
-                        }
+                                "pattern": "media-local/windows/wmi_exporter/v0.2.7/wmi_exporter-amd64.zip",
+                                "target": "wmi_exporter-amd64.zip",
+                                "flat": true,
+                               }
+                            ]
+                        }"""
+                     server.download(downloadSpec)   
+                     }  
+
+                    }
                         
                     
                         stage('Deploy to QA southcentralus'){
