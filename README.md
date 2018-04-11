@@ -1,7 +1,7 @@
 This is a sample project that demonstrates how to run a local Jenkins server via docker-compose and develop/test your pipeline scripts on it. 
 
 # Launch Jenkins
-- Checkout this project to a directory (`user_home`) and go to `/user_home/jenkins-dev`.
+- Checkout this project to a directory (`user_home`) and go to `/user_home/pipeline-dev`.
 - Run `docker-compose up` and follow the logs. You will see the initial setup log as follows:
 ```
 jenkins_1  |
@@ -29,7 +29,7 @@ jenkins_1  | *************************************************************
 
 - Create a job to point to the project directory on your local. For an example I provide a pipeline called `hello-jenkins`
 - Configure the pipeline (Pipeline -> Pipeline script from SCM -> Git as follows:
-    * Set Repository URL to `/home/jenkins-dev`  
+    * Set Repository URL to `/home/pipeline-dev`  
     * Set Script Path `hello-jenkins/Jenkinsfile`
 - Your pipeline project it set to  read from your local git repository and ready to run. 
 
