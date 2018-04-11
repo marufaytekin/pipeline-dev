@@ -1,4 +1,4 @@
-This is a sample project that demonstrates how to run a local Jenkins server via docker-compose and develop/test your pipeline scripts on it. 
+This is a sample project that demonstrates how to run a local Jenkins server via docker-compose and develop/test/run your pipeline scripts on it. 
 
 # Launch Jenkins
 - Checkout this project to a directory (`user_home`) and go to `/user_home/pipeline-dev`.
