@@ -28,9 +28,10 @@ jenkins_1  | *************************************************************
 # Create Pipeline
 
 - Create a job to point to the project directory on your local. For an example I provide a pipeline called `hello-jenkins`
-- Configure the pipeline (Pipeline -> Pipeline script from SCM -> Git as follows:
-    * Set Repository URL to `/home/pipeline-dev`  
-    * Set Script Path `hello-jenkins/Jenkinsfile`
+- Configure the pipeline as follows:
+    * Select `Pipeline from SCM` and set SCM to Git. 
+    * Set Repository URL to `/home/pipeline-dev`.
+    * Set Script Path `hello-jenkins/Jenkinsfile`.
 - Your pipeline project it set to  read from your local git repository and ready to run. 
 
 # Iterate
